@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "df-moveable": "../../uni_modules/df-movable/components/df-movable/df-movable"
+  }
+}

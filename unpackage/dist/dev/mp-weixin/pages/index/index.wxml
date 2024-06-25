@@ -1,0 +1,1 @@
+<view class="content"><df-moveable wx:for="{{a}}" wx:for-item="i" wx:key="a" u-s="{{['d']}}" bindmovableEnd="{{i.b}}" u-i="{{i.c}}" bind:__l="__l" u-p="{{b}}"> 测试看看款式 </df-moveable></view>

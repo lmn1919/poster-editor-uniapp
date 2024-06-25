@@ -1,0 +1,73 @@
+
+page {
+  overflow: hidden;
+  height: 100%;
+}
+.content {
+  margin: 0;
+  position: absolute;
+  border: 2px solid #b0d4f3;
+  font-size: 60rpx;
+}
+.logo {
+  height: 100%;
+  width: 100%;
+  display: block;
+  background-color: #ffffff;
+}
+.fangda {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 99;
+  right: -6px;
+  top: -20px;
+  background-color: #999;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fangda .image {
+  width: 80%;
+  height: 80%;
+  display: inline-block;
+  transform: rotate(-39deg);
+}
+/* 
+.right-point {
+ 
+
+ 
+  top: 10px;
+} */
+.drag-right,.drag-left{
+  height: 14px;
+  width: 6px;
+  background: red;
+  border-radius: 5rpx;
+  display: inline-block;
+  position: absolute;
+}
+.drag-right{
+	right: -4px;
+}
+.drag-left{
+	left: -4px;
+}
+.drag-top,.drag-bottom{
+  width: 14px;
+  height: 6px;
+  background: red;
+  border-radius: 5rpx;
+  display: inline-block;
+  position: absolute;
+}
+.drag-top{
+  top:-4px;
+}
+.drag-bottom{
+	bottom: -4px;
+}
+
+
