@@ -11,35 +11,39 @@
 		<HandleBox></HandleBox>
     </movable-area> -->
 
-    <df-moveable v-for="i in 1" :y="50" :x="50" :scale="1" :rotate="0" :key="i" @movableEnd="moveableEnd">
+    <!-- <df-moveable v-for="i in 1" :y="50" :x="50" :scale="1" :rotate="0" :key="i" @movableEnd="moveableEnd">
              测试看看款式
-    </df-moveable>
+    </df-moveable> -->
+    <PosterContent :poster="poster"></PosterContent>
+	
+	
+
+    <!-- <HandleBar></HandleBar> -->
   </view>
 </template>
 
 <script>
 import dfMoveable from "@/uni_modules/df-movable/components/df-movable/df-movable";
-// import HandleBox from "../handle-box/index.vue";
+import HandleBar from "./modules/handle-bar.vue";
+import PosterContent from "./modules/poster-content.vue"
 export default {
   components: {
     // HandleBox,
-    dfMoveable
+    dfMoveable,
+    HandleBar,
+	PosterContent
   },
 
   data() {
     return {
-      x: 0,
-      y: 0,
-      old: {
-        x: 0,
-        y: 0,
-      },
-      path: "",
+      htmlDom:'<view v-for="(item,index) of poster.views">{{item.type}}</view>',
       poster: {
         css: {
           width: "750rpx",
           paddingBottom: "40rpx",
-          background: "linear-gradient(,#000 0%, #ff5000 100%)",
+		  // height:'800rpx',
+          // background: "linear-gradient(,#000 0%, #ff5000 100%)",
+		  background: "linear-gradient(#ff5000 100%,#000 0%)",
         },
         views: [
           {
@@ -213,7 +217,8 @@ export default {
                       color: "#333333",
                       lineHeight: "1.8em",
                       fontSize: "36rpx",
-                      width: "478rpx",
+                      width: "408rpx",
+					  display:'inline-block'
                     },
                   },
                   {
@@ -235,17 +240,16 @@ export default {
     };
   },
   onLoad() {
-    console.log('this.old');
+  
+	let dome=this.htmlParse(this.poster.views)
+	  console.log('this.old',dome);
   },
   methods: {
-    onChange: function (e) {
-      this.old.x = e.detail.x;
-      this.old.y = e.detail.y;
-    },
-
-    moveableEnd(e){
-      console.log(e)
-    }
+	 // 递归将海报数据解析成html
+     htmlParse(views){
+		  
+	 }
+	
   },
 };
 </script>
