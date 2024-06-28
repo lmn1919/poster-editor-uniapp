@@ -7,7 +7,7 @@
 				<view v-if="item.type=='view'" :style="item.css" :key="index">{{item.text}}</view> 
 			</template>
 			
-			<view v-else :style="item.css">
+			<view v-else :style="item.css" :key="index">
 				<template v-for="(itemChildren1,childrenIndex1) of item.views">
 					<template v-if="!itemChildren1.views">
 					    <image :src="itemChildren1.src" v-if="itemChildren1.type=='image'" :mode="objectFitKV[itemChildren1.css.objectFit]" :style="itemChildren1.css" :key="childrenIndex1"></image>
@@ -15,16 +15,16 @@
 						<view v-if="itemChildren1.type=='view'" :style="itemChildren1.css" :key="childrenIndex1">{{itemChildren1.text}}</view> 
 					</template>
 					
-					<view v-else :style="itemChildren1.css">
+					<view v-else :style="itemChildren1.css" :key="childrenIndex1">
 						<template v-for="(itemChildren2,childrenIndex2) of itemChildren1.views">
 							<template v-if="!itemChildren2.views">
 							    <image :src="itemChildren2.src" v-if="itemChildren2.type=='image'" :mode="objectFitKV[itemChildren2.css.objectFit]" :style="itemChildren2.css" :key="childrenIndex2"></image>
-							    <text v-if="itemChildren2.type=='text'" :style="itemChildren2.css" :key="childrenIndex1">{{itemChildren2.text}}</text> 
-								<view v-if="itemChildren2.type=='view'" :style="itemChildren2.css" :key="childrenIndex1">{{itemChildren2.text}}</view> 
-								<text v-if="itemChildren2.type=='qrcode'" :style="itemChildren2.css" :key="childrenIndex1">二维码</text> 
+							    <text v-if="itemChildren2.type=='text'" :style="itemChildren2.css" :key="childrenIndex2">{{itemChildren2.text}}</text> 
+								<view v-if="itemChildren2.type=='view'" :style="itemChildren2.css" :key="childrenIndex2">{{itemChildren2.text}}</view> 
+								<text v-if="itemChildren2.type=='qrcode'" :style="itemChildren2.css" :key="childrenIndex2">二维码</text> 
 							</template>
 							
-							<view v-else :style="itemChildren2.css">
+							<view v-else :style="itemChildren2.css" :key="childrenIndex2">
 								
 							</view>
 							

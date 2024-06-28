@@ -15,8 +15,6 @@
              测试看看款式
     </df-moveable> -->
     <PosterContent :poster="poster"></PosterContent>
-	
-	
 
     <!-- <HandleBar></HandleBar> -->
   </view>
@@ -25,25 +23,26 @@
 <script>
 import dfMoveable from "@/uni_modules/df-movable/components/df-movable/df-movable";
 import HandleBar from "./modules/handle-bar.vue";
-import PosterContent from "./modules/poster-content.vue"
+import PosterContent from "./modules/poster-content.vue";
 export default {
   components: {
     // HandleBox,
     dfMoveable,
     HandleBar,
-	PosterContent
+    PosterContent,
   },
 
   data() {
     return {
-      htmlDom:'<view v-for="(item,index) of poster.views">{{item.type}}</view>',
+      htmlDom:
+        '<view v-for="(item,index) of poster.views">{{item.type}}</view>',
       poster: {
         css: {
           width: "750rpx",
           paddingBottom: "40rpx",
-		  // height:'800rpx',
-          // background: "linear-gradient(,#000 0%, #ff5000 100%)",
-		  background: "linear-gradient(#ff5000 100%,#000 0%)",
+          // height:'800rpx',
+          background: "linear-gradient(,#000 0%, #ff5000 100%)",
+          // background: "linear-gradient(#ff5000 100%,#000 0%)",
         },
         views: [
           {
@@ -218,7 +217,7 @@ export default {
                       lineHeight: "1.8em",
                       fontSize: "36rpx",
                       width: "408rpx",
-					  display:'inline-block'
+                      display: "inline-block",
                     },
                   },
                   {
@@ -240,16 +239,53 @@ export default {
     };
   },
   onLoad() {
-  
-	let dome=this.htmlParse(this.poster.views)
-	  console.log('this.old',dome);
+    this.cssHandle(this.poster.views);
+    this.cssHandle([{ css: this.poster.css }]);
   },
   methods: {
-	 // 递归将海报数据解析成html
-     htmlParse(views){
-		  
-	 }
-	
+    // 递归处理不适配的样式
+    cssHandle(views) {
+      views.forEach((item) => {
+        if (item.css) {
+          for (let key in item.css) {
+            if (key == "background") {
+              let value = item.css.background;
+
+              if (value.indexOf("linear-gradient") != -1) {
+                let itemObj = value
+                  .split("(")[1]
+                  .split(")")[0]
+                  .split(",")
+                  .filter((el) => el)
+                  .reverse();
+                let bgText = itemObj.join(",");
+                item.css.backgroundImage = `linear-gradient(${bgText})`;
+              }
+
+              item.css.backgroundColor = item.css.background;
+            }
+            if (key == "lineClamp") {
+              // item.css.objectFit =this.objectFitKV[item.css.objectFit];
+              item.css = {
+                ...item.css,
+                overflow: "hidden",
+                "word-break": "break-all",
+                "text-overflow": "ellipsis",
+                display: "-webkit-box", // 弹性伸缩盒
+                "-webkit-box-orient": "vertical", // 设置伸缩盒子元素排列方式
+                "-webkit-line-clamp": item.css.lineClamp,
+              };
+            }
+          }
+        }
+        if (item.views) {
+          this.cssHandle(item.views);
+        }
+      });
+      return views;
+    },
+
+
   },
 };
 </script>
