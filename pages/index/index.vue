@@ -14,9 +14,9 @@
     <!-- <df-moveable v-for="i in 1" :y="50" :x="50" :scale="1" :rotate="0" :key="i" @movableEnd="moveableEnd">
              测试看看款式
     </df-moveable> -->
-    <PosterContent :poster="poster"></PosterContent>
-
-    <!-- <HandleBar></HandleBar> -->
+    <!-- <PosterContent :poster="poster"></PosterContent> -->
+    <!-- <TextEditor></TextEditor> -->
+    <HandleBar></HandleBar>
   </view>
 </template>
 
@@ -24,12 +24,14 @@
 import dfMoveable from "@/uni_modules/df-movable/components/df-movable/df-movable";
 import HandleBar from "./modules/handle-bar.vue";
 import PosterContent from "./modules/poster-content.vue";
+// import TextEditor from './modules/text-editor.vue';
 export default {
   components: {
     // HandleBox,
     dfMoveable,
     HandleBar,
     PosterContent,
+    // TextEditor
   },
 
   data() {
@@ -214,7 +216,7 @@ export default {
                       boxSizing: "border-box",
                       lineClamp: 2,
                       color: "#333333",
-                      lineHeight: "1.8em",
+                      lineHeight: "1.6em",
                       fontSize: "36rpx",
                       width: "408rpx",
                       display: "inline-block",
@@ -271,7 +273,7 @@ export default {
                 overflow: "hidden",
                 "word-break": "break-all",
                 "text-overflow": "ellipsis",
-                display: "-webkit-box", // 弹性伸缩盒
+                display: "-webkit-inline-box", // 弹性伸缩盒
                 "-webkit-box-orient": "vertical", // 设置伸缩盒子元素排列方式
                 "-webkit-line-clamp": item.css.lineClamp,
               };

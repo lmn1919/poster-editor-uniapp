@@ -18,12 +18,16 @@
 		 	<text class="handle-name">尺寸</text>
 		 </view>
 	</view>  
+	<TextEditor/>
   </view>
 </template>
 
 <script>
+import TextEditor from './text-editor.vue';
 export default {
-  components: {},
+  components: {
+	TextEditor
+  },
 
   data() {
     return {
@@ -34,7 +38,12 @@ export default {
 		// ]
 	};
   },
-  onLoad() {},
+  mounted() {
+
+  },
+  onLoad() {
+
+  },
   methods: {},
 };
 </script>
