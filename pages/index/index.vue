@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-    <!--  <image :src="path" mode="widthFix"></image>
+     <!-- <image :src="path" mode="widthFix"></image>
 		  <l-painter
 		    :board="poster"
 		    isCanvasToTempFilePath
@@ -11,10 +11,10 @@
 		<HandleBox></HandleBox>
     </movable-area> -->
 
-    <!-- <df-moveable v-for="i in 1" :y="50" :x="50" :scale="1" :rotate="0" :key="i" @movableEnd="moveableEnd">
+    <df-moveable v-for="i in 1" :y="50" :x="50" :scale="1" :rotate="0" :key="i" @movableEnd="moveableEnd">
              测试看看款式
-    </df-moveable> -->
-    <!-- <PosterContent :poster="poster"></PosterContent> -->
+    </df-moveable>
+    <PosterContent :poster="poster"></PosterContent>
     <!-- <TextEditor></TextEditor> -->
     <HandleBar></HandleBar>
   </view>
